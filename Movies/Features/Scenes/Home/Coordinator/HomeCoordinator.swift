@@ -16,6 +16,7 @@ final class HomeCoordinator {
         self.navigation = navigation
     }
 }
+
 extension HomeCoordinator: HomeCoordinating {
     func navigate(to view: HomeActions) {
         switch view {
