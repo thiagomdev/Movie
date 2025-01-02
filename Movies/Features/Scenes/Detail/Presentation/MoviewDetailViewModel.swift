@@ -17,7 +17,10 @@ final class MoviewDetailViewModel {
 
 extension MoviewDetailViewModel: MoviewDetailViewModelProtocol {
     var releaseDate: String {
-        return formatterStr(apiDate: "\(allMovies.first?.releaseDate ?? "")")
+        if let release = allMovies.first?.releaseDate {
+            return formatterStr(apiDate: release)
+        }
+        return String()
     }
     
     var voteAverage: String {
