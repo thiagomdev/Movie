@@ -3,7 +3,7 @@ import XCTest
 
 final class MoviewDetailViewModelTests: XCTestCase {
     func test_releaseDate() {
-        let movie: MovieResult = .fixture(releaseDate: "17-10-24")
+        let movie: Set<MovieResult> = [.fixture(releaseDate: "17-10-24")]
         
         let viewModel = MoviewDetailViewModel(movie)
         let releaseDate = viewModel.releaseDate
@@ -12,7 +12,7 @@ final class MoviewDetailViewModelTests: XCTestCase {
     }
      
     func test_voteAverage() {
-        let movie: MovieResult = .fixture(voteAverage: 8.5)
+        let movie: Set<MovieResult> = [.fixture(voteAverage: 8)]
         let viewModel = MoviewDetailViewModel(movie)
         let voteAverage = viewModel.voteAverage
         
@@ -20,7 +20,7 @@ final class MoviewDetailViewModelTests: XCTestCase {
     }
     
     func test_posterPath() {
-        let movie: MovieResult = .fixture(posterPath: "/path/to/poster.jpg")
+        let movie: Set<MovieResult> = [.fixture(posterPath: "/path/to/poster.jpg")]
         let viewModel = MoviewDetailViewModel(movie)
         let posterPath = viewModel.img
         
@@ -28,11 +28,11 @@ final class MoviewDetailViewModelTests: XCTestCase {
     }
     
     func test_allResults() {
-        let movie: MovieResult = .fixture(
+        let movie: Set<MovieResult> = [.fixture(
             releaseDate: "2024-10-17",
             voteAverage: 8.5,
             posterPath: "/path/to/poster.jpg"
-        )
+        )]
         
         let viewModel = MoviewDetailViewModel(movie)
         let releaseDate = viewModel.releaseDate

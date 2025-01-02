@@ -16,7 +16,7 @@ final class HomeCoordinatorTests: XCTestCase {
     func test_navigateAction_whenNavigationIsCalled_shouldReturnedDetailViewController() {
         let (sut, mock) = makeSut()
         
-        sut.navigate(to: .detail(movie: .fixture()))
+        sut.navigate(to: .detail(movie: [.fixture()]))
         
         XCTAssertNotNil(mock.pushedViewController, "The pushViewControllerCalled cannot be nil")
         XCTAssertTrue(mock.pushViewControllerCalled, "The pushViewControllerCalled needs to be true")
