@@ -78,7 +78,8 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if let selectedMovie = viewModel.movies.first?[indexPath.row] {
-            coodinator?.navigate(to: .detail(movie: selectedMovie))
+            let receivedMovie: Set<MovieResult> = [selectedMovie]
+            coodinator?.navigate(to: .detail(movie: receivedMovie))
         }
     }
     

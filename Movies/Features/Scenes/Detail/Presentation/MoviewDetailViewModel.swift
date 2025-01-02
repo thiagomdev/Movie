@@ -8,34 +8,34 @@ protocol MoviewDetailViewModelProtocol {
 }
 
 final class MoviewDetailViewModel {
-    private let allMovies: MovieResult
+    private let allMovies: Set<MovieResult>
     
-    init(_ allMovies: MovieResult) {
+    init(_ allMovies: Set<MovieResult>) {
         self.allMovies = allMovies
     }
 }
 
 extension MoviewDetailViewModel: MoviewDetailViewModelProtocol {
     var releaseDate: String {
-        return formatterStr(apiDate: "\(allMovies.releaseDate ?? "")")
+        return formatterStr(apiDate: "\(allMovies.first?.releaseDate ?? "")")
     }
     
     var voteAverage: String {
-        if let rate = allMovies.voteAverage {
+        if let rate = allMovies.first?.voteAverage {
             return "Avaliação: \(Int(rate))"
         }
         return String()
     }
     
     var img: String {
-        if let url = allMovies.posterPath {
+        if let url = allMovies.first?.posterPath {
             return url
         }
         return String()
     }
     
     var overview: String {
-        return allMovies.overview
+        return allMovies.first?.overview ?? ""
     }
     
     private func formatterStr(apiDate: String) -> String {

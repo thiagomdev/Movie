@@ -2,7 +2,7 @@ import UIKit
 
 enum HomeActions: Equatable {
     case start
-    case detail(movie: MovieResult)
+    case detail(movie: Set<MovieResult>)
 }
 
 protocol HomeCoordinating: AnyObject {
