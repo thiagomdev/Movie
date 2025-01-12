@@ -1,7 +1,7 @@
 @testable import Movies
 
 extension Movie {
-    static func fixture() -> Self {
+    static func fixture(results: [MovieResult] = [.fixture()]) -> Self {
         .init(
             page: 0,
             results: [],
@@ -12,7 +12,7 @@ extension Movie {
 }
 
 extension MovieResult {
-    static func fixture() -> Self {
+    static func fixture(title: String = String()) -> Self {
         .init(
             adult: false,
             backdropPath: nil,
@@ -23,7 +23,7 @@ extension MovieResult {
             overview: "",
             popularity: 0.0,
             posterPath: nil,
-            title: nil,
+            title: title,
             video: false,
             voteAverage: 0.0,
             voteCount: nil

@@ -2,7 +2,7 @@
 
 final class HomeViewModelSpy: NetworkingProtocol {
     var expected: (Result<Movies.Movie, any Error>)?
-
+    
     private(set) var fetchDataMoviesCalled: Bool = false
     private(set) var fetchDataMoviesCount: Int = 0
     

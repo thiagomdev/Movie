@@ -27,6 +27,15 @@ final class HomeViewModelTests: XCTestCase {
         })
     }
     
+    func test_() {
+        let (sut, spy) = makeSut()
+        var movies: [Movie] = [.fixture(results: [.fixture(title: "Movie")])]
+        
+        sut.display(dataSource: .fixture(results: [.fixture(title: "Movie")]))
+
+        XCTAssertEqual(movies.first, .fixture(results: [.fixture(title: "Movie")]))
+    }
+    
     private func makeSut(
         file: StaticString = #file,
         line: UInt = #line) -> (sut: HomeViewModel, spy: HomeViewModelSpy) {

@@ -2,6 +2,14 @@ import XCTest
 @testable import Movies
 
 final class MoviewDetailViewModelTests: XCTestCase {
+    func test_empty_release_date() {
+        let movie: Set<MovieResult> = [.fixture(releaseDate: "")]
+        
+        let releaseDate = movie.first?.releaseDate
+    
+        XCTAssertEqual(releaseDate, "")
+    }
+    
     func test_releaseDate() {
         let movie: Set<MovieResult> = [.fixture(releaseDate: "17-10-24")]
         
@@ -42,6 +50,54 @@ final class MoviewDetailViewModelTests: XCTestCase {
         XCTAssertEqual(releaseDate, "17 de outubro de 2024", "Should be returned the correct release date")
         XCTAssertEqual(posterPath, "/path/to/poster.jpg", "Should be returned the correct poster path")
         XCTAssertEqual(voteAverage, "Avaliação: 8", "Should be returned the correct vote average")
+    }
+    
+    func test_formatter_str_with_valid_date() {
+        let movie: Set<MovieResult> = [.fixture(releaseDate: "2025-01-11")]
+        let sut = MoviewDetailViewModel(movie)
+        guard let date = movie.first?.releaseDate else { return }
+        let result = sut.formatterStr(apiDate: "\(date) d 'de' MMMM 'de' yyyy")
+        
+        XCTAssertEqual(result, date)
+    }
+    
+    func test_formatter_str_with_invalid_date() {
+        let movie: Set<MovieResult> = [.fixture(releaseDate: "01-04-2025")]
+        let sut = MoviewDetailViewModel(movie)
+        
+        let result = sut.formatterStr(apiDate: "01-04-2025")
+        
+        let currentDate = DateFormatter()
+        currentDate.dateFormat = "yyyy-MM-dd"
+        let expected = currentDate.string(from: Date())
+        
+        XCTAssertEqual(result, expected)
+    }
+    
+    func test_formatter_str_with_empty_date() {
+        let movie: Set<MovieResult> = [.fixture(releaseDate: "")]
+        let sut = MoviewDetailViewModel(movie)
+        
+        let result = sut.formatterStr(apiDate: "")
+        
+        let currentDate = DateFormatter()
+        currentDate.dateFormat = "yyyy-MM-dd"
+        let expected = currentDate.string(from: Date())
+        
+        XCTAssertEqual(result, expected)
+    }
+    
+    func test_formatter_str_with_boundary_date() {
+        let movie: Set<MovieResult> = [.fixture(releaseDate: "0001-01-01")]
+        let sut = MoviewDetailViewModel(movie)
+        
+        let result = sut.formatterStr(apiDate: "1 de janeiro de 1")
+        
+        let currentDate = DateFormatter()
+        currentDate.dateFormat = "yyyy-MM-dd"
+        let expected = currentDate.string(from: Date())
+        
+        XCTAssertEqual(result, expected)
     }
 }
 

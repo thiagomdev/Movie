@@ -41,7 +41,7 @@ extension MoviewDetailViewModel: MoviewDetailViewModelProtocol {
         return allMovies.first?.overview ?? ""
     }
     
-    private func formatterStr(apiDate: String) -> String {
+    func formatterStr(apiDate: String) -> String {
         let dataFormatter = DateFormatter()
         dataFormatter.dateFormat = "yyyy-MM-dd"
         if let date = dataFormatter.date(from: apiDate) {

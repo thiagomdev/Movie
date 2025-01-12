@@ -5,21 +5,16 @@ protocol HomeViewModelProtocol {
     var cell: Set<[HomeCellViewModel]> { get set }
     
     func fetchData(callback: @escaping (Result<Movie, Error>) -> Void)
+    func display(dataSource:  Movie)
 }
 
 final class HomeViewModel {
     private let service: NetworkingProtocol
     private var model = Set<[MovieResult]>()
     private var customCell = Set<[HomeCellViewModel]>()
-        
+    
     init(service: NetworkingProtocol) {
         self.service = service
-    }
-    
-    private func display(dataSource:  Movie) {
-        _ = dataSource.results.compactMap { movies in
-            cell.insert([HomeCellViewModel(movies)])
-        }
     }
 }
 
@@ -43,6 +38,12 @@ extension HomeViewModel: HomeViewModelProtocol {
             case let .failure(error):
                 callback(.failure(error))
             }
+        }
+    }
+    
+    func display(dataSource:  Movie) {
+        _ = dataSource.results.compactMap { movies in
+            cell.insert([HomeCellViewModel(movies)])
         }
     }
 }
