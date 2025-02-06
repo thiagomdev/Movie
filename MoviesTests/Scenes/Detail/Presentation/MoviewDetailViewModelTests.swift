@@ -53,7 +53,7 @@ final class MoviewDetailViewModelTests: XCTestCase {
     }
     
     func test_formatter_str_with_valid_date() {
-        let movie: Set<MovieResult> = [.fixture(releaseDate: "2025-01-11")]
+        let movie: Set<MovieResult> = [.fixture(releaseDate: "2025-01-12")]
         let sut = MoviewDetailViewModel(movie)
         guard let date = movie.first?.releaseDate else { return }
         let result = sut.formatterStr(apiDate: "\(date) d 'de' MMMM 'de' yyyy")

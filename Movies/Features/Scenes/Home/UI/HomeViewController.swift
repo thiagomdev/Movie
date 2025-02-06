@@ -11,23 +11,27 @@ final class HomeViewController: UIViewController {
         self.homeView = homeView
         super.init(nibName: nil, bundle: nil)
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Movies"
+        didFecthData()
+    }
   
     override func loadView() {
         super.loadView()
         view = homeView
-        didSetTableViewProtocols()
-        didFecthData()
     }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Movies"
+        didSetTableViewProtocols()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 

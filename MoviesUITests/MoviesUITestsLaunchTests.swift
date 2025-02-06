@@ -2,7 +2,7 @@
 //  MoviesUITestsLaunchTests.swift
 //  MoviesUITests
 //
-//  Created by Thiago Monteiro on 13/10/24.
+//  Created by Thiago Monteiro on 26/01/25.
 //
 
 import XCTest

@@ -1,7 +1,7 @@
 import UIKit
 
-enum HomeFactory {
-    static func make(coordinator: HomeCoordinating) -> UIViewController {
+public enum HomeFactory {
+    public static func make(coordinator: HomeCoordinating) -> UIViewController {
         let service = Networking(session: .shared)
         let viewModel = HomeViewModel(service: service)
         let view = HomeView()

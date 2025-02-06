@@ -1,12 +1,12 @@
 import Foundation
 
-struct Movie: Codable, Equatable, Hashable {
+public struct Movie: Codable, Equatable, Hashable {
     let page: Int
     let results: [MovieResult]
     let totalPages, totalResults: Int?
 }
 
-struct MovieResult: Codable, Equatable, Hashable {
+public struct MovieResult: Codable, Equatable, Hashable {
     let adult: Bool
     let backdropPath: String?
     let genreIDS: [Int]?

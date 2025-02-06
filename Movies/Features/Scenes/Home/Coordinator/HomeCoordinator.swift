@@ -1,24 +1,24 @@
 import UIKit
 
-enum HomeActions: Equatable {
+public enum HomeActions: Equatable {
     case start
     case detail(movie: Set<MovieResult>)
 }
 
-protocol HomeCoordinating: AnyObject {
+public protocol HomeCoordinating: AnyObject {
     func navigate(to view: HomeActions)
 }
 
-final class HomeCoordinator {
+public final class HomeCoordinator {
     private let navigation: UINavigationController
     
-    init(navigation: UINavigationController) {
+    public init(navigation: UINavigationController) {
         self.navigation = navigation
     }
 }
 
 extension HomeCoordinator: HomeCoordinating {
-    func navigate(to view: HomeActions) {
+    public func navigate(to view: HomeActions) {
         switch view {
         case .start:
             let home = HomeFactory.make(coordinator: self)

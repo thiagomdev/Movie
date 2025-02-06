@@ -32,6 +32,13 @@
         "identifier" : "AA4FF6FE2CBB78EC009F85B5",
         "name" : "MoviesTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Movies.xcodeproj",
+        "identifier" : "AA667D612D4685F0000F7DEF",
+        "name" : "MoviesUITests"
+      }
     }
   ],
   "version" : 1

@@ -2,7 +2,7 @@ import Foundation
 
 final class URLSessionStub: URLProtocol {
     private static var stub: Stub?
-    private static var observerRequest: ((URLRequest) -> Void)?
+    private static var observerRequest: [((URLRequest) -> Void)]?
     
     private struct Stub {
         let data: Data?
@@ -15,7 +15,7 @@ final class URLSessionStub: URLProtocol {
     }
     
     static func observerRequests(_ observer: @escaping (URLRequest) -> Void) {
-        observerRequest = observer
+        observerRequest?.append(observer)
     }
     
     static func startInterceptionRequests() {
@@ -37,7 +37,7 @@ final class URLSessionStub: URLProtocol {
     }
     
     override func startLoading() {
-        if let observer = URLSessionStub.observerRequest {
+        if let observer = URLSessionStub.observerRequest?.first {
             client?.urlProtocolDidFinishLoading(self)
             return observer(request)
         }
