@@ -10,12 +10,10 @@ target 'Movies' do
   target 'MoviesTests' do
     inherit! :search_paths
     # Pods for testing
-      pod 'iOSSnapshotTestCase'
   end
 
   target 'MoviesUITests' do
     # Pods for testing
-      pod 'iOSSnapshotTestCase'
   end
 
 end

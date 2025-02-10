@@ -9,15 +9,6 @@
     }
   ],
   "defaultOptions" : {
-    "codeCoverage" : {
-      "targets" : [
-        {
-          "containerPath" : "container:Movies.xcodeproj",
-          "identifier" : "AA4FF6E82CBB78EA009F85B5",
-          "name" : "Movies"
-        }
-      ]
-    },
     "targetForVariableExpansion" : {
       "containerPath" : "container:Movies.xcodeproj",
       "identifier" : "AA4FF6E82CBB78EA009F85B5",
